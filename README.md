@@ -237,7 +237,7 @@ DBT models transform the raw data into:
 ## Project Structure
 
 ```
-realtime_weather_data/
+WeatherStream-Pipeline/
 ├── config/
 │   └── .env
 ├── docs/
@@ -285,22 +285,30 @@ realtime_weather_data/
 │   ├── dbt_project.yml
 │   ├── profiles.yml
 │   └── README.md
+├── aws/                 # AWS deployment scripts
+│   └── deploy_to_fargate.sh
 ├── .gitignore
-├── CONTRIBUTING.md
-├── LICENSE
+├── LICENSE              # MIT License
 ├── pytest.ini
 ├── README.md
-└── requirements.txt
-└── run_pipeline.sh
+├── requirements.txt
+├── Dockerfile           # Container definition
+├── docker-compose.yml   # Container orchestration
+├── test_pipeline.py     # End-to-end testing
+└── run_pipeline.sh      # Pipeline execution script
 ```
 
 ## Future Enhancements
 
-- Dockerization for easy deployment
-- AWS Fargate deployment
-- Web dashboard for data visualization
-- Additional data transformations and analysis
-- Support for more weather data metrics and cities 
+Potential areas for future development:
+
+- **Web Dashboard**: Create an interactive dashboard for visualizing the weather data and trends
+- **Machine Learning Integration**: Add predictive models for weather forecasting based on historical data
+- **Extended API Support**: Add support for additional weather data providers beyond OpenWeatherMap
+- **Geographic Expansion**: Scale to collect data for hundreds of cities worldwide
+- **Real-time Alerts**: Implement a notification system for extreme weather events
+- **Historical Analysis**: Add functionality to analyze long-term climate trends
+- **Mobile App**: Develop a companion mobile application for data visualization on the go
 
 ## Testing the Pipeline
 
