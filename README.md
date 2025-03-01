@@ -11,15 +11,15 @@ A comprehensive data pipeline project that collects real-time weather data from 
                  └──────┬──────┘
                         │
                         ▼
-┌───────────────────────────────────┐
-│           Producer                │
-│ (src/producer/weather_producer.py)│
-└───────────────────┬───────────────┘
-                    │
+┌───────────────────────────────────┐     ┌───────────────────┐
+│           Producer                │     │   Deployment:     │
+│ (src/producer/weather_producer.py)│◄────┤   Docker Container│
+└───────────────────┬───────────────┘     │   AWS Fargate     │
+                    │                      └───────────────────┘
                     ▼
           ┌───────────────────┐
           │   Confluent       │
-          │   Kafka           │
+          │   Kafka Cloud     │
           └─────────┬─────────┘
                     │
                     ▼
@@ -30,14 +30,20 @@ A comprehensive data pipeline project that collects real-time weather data from 
                     │
                     ▼
           ┌───────────────────┐
+          │   AWS RDS         │
           │   PostgreSQL      │
-          │   Database        │
           └─────────┬─────────┘
                     │
                     ▼
         ┌─────────────────────────┐
         │    DBT Transformations  │
         │    (weather_transforms) │
+        └────────────┬────────────┘
+                     │
+                     ▼
+        ┌─────────────────────────┐
+        │  End-to-End Testing     │
+        │  (test_pipeline.py)     │
         └─────────────────────────┘
 ```
 
