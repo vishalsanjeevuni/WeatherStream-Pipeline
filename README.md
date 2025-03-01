@@ -1,6 +1,6 @@
 # WeatherStream Pipeline
 
-A comprehensive data pipeline that collects real-time weather data from OpenWeatherMap API, processes it through Confluent Kafka, stores it in PostgreSQL, and transforms it with dbt for analysis.
+A comprehensive data pipeline project that collects real-time weather data from OpenWeatherMap API, processes it through Confluent Kafka, stores it in PostgreSQL, and transforms it with dbt for analysis. This project was built as a personal portfolio piece to demonstrate my data engineering skills.
 
 ## Architecture
 
@@ -91,8 +91,8 @@ DBT Transformations: ✅ PASS
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/weatherstream-pipeline.git
-cd weatherstream-pipeline
+git clone https://github.com/vishalsanjeevuni/WeatherStream-Pipeline.git
+cd WeatherStream-Pipeline
 ```
 
 ### 2. Create and activate a virtual environment
@@ -421,7 +421,7 @@ You can monitor the running container in the AWS ECS console or using AWS CloudW
 
 ## Conclusion
 
-This weather data pipeline demonstrates a modern data engineering architecture using Confluent Kafka, PostgreSQL, and DBT. The project showcases:
+This weather data pipeline project demonstrates a modern data engineering architecture using Confluent Kafka, PostgreSQL, and DBT. I've built this project to showcase:
 
 1. **Real-time Data Collection**: Continuous ingestion of weather data from OpenWeatherMap API
 2. **Stream Processing**: Reliable message queuing with Confluent Kafka
@@ -441,4 +441,4 @@ This implementation follows modern data engineering best practices, including:
 - Infrastructure-as-code approach to deployment
 - Documentation-driven development
 
-For any questions or issues, please open a GitHub issue or contact the project maintainer. 
+For any questions about this project, please feel free to reach out directly. 
