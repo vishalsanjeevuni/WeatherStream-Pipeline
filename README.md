@@ -528,4 +528,4 @@ This weather data pipeline project demonstrates my proficiency in modern data en
 
 The skills demonstrated in this project align with real-world data engineering roles, where building resilient, scalable, and maintainable data pipelines is essential. The architecture follows industry best practices and can be adapted to various business domains beyond weather data.
 
-For any questions about this project, please feel free to reach out directly or connect with me on [LinkedIn](https://www.linkedin.com/in/vishalsanjeevuni/). 
+For any questions about this project, please feel free to reach out directly or connect with me on [LinkedIn](https://www.linkedin.com/in/vishal-sanjeevuni/). 
