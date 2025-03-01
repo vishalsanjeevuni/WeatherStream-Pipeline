@@ -17,6 +17,7 @@ import requests
 import subprocess
 from datetime import datetime
 import psycopg2
+import logging
 from dotenv import load_dotenv
 from confluent_kafka import Producer, Consumer, KafkaError
 from confluent_kafka.admin import AdminClient, NewTopic
@@ -29,11 +30,30 @@ else:
     print(f"Error: .env file not found at {env_path}")
     sys.exit(1)
 
-# Add the src directory to the path
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src'))
-from utils import setup_logger
+# Setup logging directly instead of importing
+def setup_logger(name, log_file, level=logging.INFO):
+    """Function to set up a logger"""
+    # Create a custom logger
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
 
-# Setup logging
+    # Create handlers
+    file_handler = logging.FileHandler(log_file)
+    console_handler = logging.StreamHandler()
+
+    # Create formatters and add it to handlers
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+
+    # Add handlers to the logger
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+
+    return logger
+
+# Ensure logs directory exists
+os.makedirs('logs', exist_ok=True)
 logger = setup_logger('pipeline_test', 'logs/pipeline_test.log')
 
 class PipelineTest:
@@ -143,7 +163,7 @@ class PipelineTest:
             consumer_conf = self.kafka_config.copy()
             consumer_conf.update({
                 'group.id': 'pipeline_test_consumer',
-                'auto.offset.reset': 'latest',
+                'auto.offset.reset': 'earliest',
                 'enable.auto.commit': True
             })
             
