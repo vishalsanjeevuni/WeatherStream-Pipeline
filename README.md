@@ -1,4 +1,4 @@
-# Real-time Weather Data Pipeline
+# WeatherStream Pipeline
 
 A comprehensive data pipeline that collects real-time weather data from OpenWeatherMap API, processes it through Confluent Kafka, stores it in PostgreSQL, and transforms it with dbt for analysis.
 
@@ -54,8 +54,8 @@ A comprehensive data pipeline that collects real-time weather data from OpenWeat
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
-cd realtime_weather_data
+git clone https://github.com/yourusername/weatherstream-pipeline.git
+cd weatherstream-pipeline
 ```
 
 ### 2. Create and activate a virtual environment

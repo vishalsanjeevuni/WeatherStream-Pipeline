@@ -1,3 +1,3 @@
 """
-Test package for the weather data pipeline
+Test package for the WeatherStream Pipeline
 """ 

@@ -1,4 +1,4 @@
-# Weather Data Transformations
+# WeatherStream Data Transformations
 
 This dbt project transforms the raw weather data collected from the OpenWeatherMap API into structured datasets suitable for analysis and visualization.
 

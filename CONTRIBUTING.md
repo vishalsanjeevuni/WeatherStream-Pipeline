@@ -1,4 +1,4 @@
-# Contributing to the Real-time Weather Data Pipeline
+# Contributing to WeatherStream Pipeline
 
 Thank you for considering contributing to this project! This document provides guidelines and instructions for contributing.
 
@@ -15,8 +15,8 @@ Thank you for considering contributing to this project! This document provides g
 
 1. Clone the repository
    ```bash
-   git clone <repository-url>
-   cd realtime_weather_data
+   git clone https://github.com/yourusername/weatherstream-pipeline.git
+   cd weatherstream-pipeline
    ```
 
 2. Create and activate a virtual environment

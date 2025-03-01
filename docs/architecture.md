@@ -1,6 +1,6 @@
-# Weather Data Pipeline Architecture
+# WeatherStream Pipeline Architecture
 
-This document provides a detailed overview of the architecture of the weather data pipeline.
+This document provides a detailed overview of the architecture of the WeatherStream Pipeline.
 
 ## System Components
 

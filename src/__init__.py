@@ -1,5 +1,5 @@
 """
-Real-time Weather Data Pipeline
+WeatherStream Pipeline
 Main package initialization file
 """
 
