@@ -1,0 +1,3 @@
+"""
+Weather data consumer package
+""" 

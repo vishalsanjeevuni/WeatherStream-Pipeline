@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: weather_data
+    database: "{{ env_var('POSTGRES_DB', 'weather-db') }}"
+    schema: public
+    tables:
+      - name: weather_raw
+        description: "Raw JSON weather data from OpenWeatherMap API"
+        columns:
+          - name: id
+            description: "Unique identifier for the record"
+          - name: data
+            description: "Raw JSON data from the API"
+          - name: timestamp
+            description: "Time the record was created"
+      
+      - name: weather_metrics
+        description: "Processed weather metrics extracted from raw data"
+        columns:
+          - name: id
+            description: "Unique identifier for the record"
+          - name: city
+            description: "City name"
+          - name: temperature
+            description: "Temperature in Celsius"
+          - name: humidity
+            description: "Humidity percentage"
+          - name: pressure
+            description: "Atmospheric pressure in hPa"
+          - name: wind_speed
+            description: "Wind speed in m/s"
+          - name: weather_condition
+            description: "General weather condition (Clear, Clouds, Rain, etc.)"
+          - name: measurement_time
+            description: "Time of the weather measurement"
+          - name: ingestion_time
+            description: "Time the record was created in the database" 

@@ -1,0 +1,122 @@
+version: 2
+
+models:
+  - name: stg_weather_raw
+    description: "Structured data extracted from raw weather JSON"
+    columns:
+      - name: id
+        description: "Unique identifier from the source table"
+      - name: city
+        description: "City name"
+      - name: temperature
+        description: "Temperature in Celsius"
+      - name: humidity
+        description: "Humidity percentage"
+      - name: pressure
+        description: "Atmospheric pressure in hPa"
+      - name: wind_speed
+        description: "Wind speed in m/s"
+      - name: wind_direction
+        description: "Wind direction in degrees"
+      - name: weather_condition
+        description: "Main weather condition (Clear, Clouds, Rain, etc.)"
+      - name: weather_description
+        description: "Detailed weather description"
+      - name: measurement_time
+        description: "Time of the weather measurement"
+      - name: ingestion_timestamp
+        description: "Timestamp when the data was ingested"
+      - name: longitude
+        description: "Longitude coordinate"
+      - name: latitude
+        description: "Latitude coordinate"
+      - name: country
+        description: "Country code"
+      - name: record_timestamp
+        description: "Timestamp when the record was created in the database"
+
+  - name: daily_weather_summary
+    description: "Daily summary of weather metrics"
+    columns:
+      - name: day
+        description: "Day of the weather measurements"
+      - name: city
+        description: "City name"
+      - name: avg_temperature
+        description: "Average temperature for the day"
+      - name: min_temperature
+        description: "Minimum temperature for the day"
+      - name: max_temperature
+        description: "Maximum temperature for the day"
+      - name: avg_humidity
+        description: "Average humidity percentage for the day"
+      - name: avg_pressure
+        description: "Average atmospheric pressure for the day"
+      - name: avg_wind_speed
+        description: "Average wind speed for the day"
+      - name: most_common_condition
+        description: "Most common weather condition for the day"
+      - name: measurement_count
+        description: "Number of measurements for the day"
+      - name: generated_at
+        description: "Timestamp when this summary was generated"
+
+  - name: hourly_weather_summary
+    description: "Hourly summary of weather metrics"
+    columns:
+      - name: hour
+        description: "Hour of the weather measurements"
+      - name: city
+        description: "City name"
+      - name: avg_temperature
+        description: "Average temperature for the hour"
+      - name: min_temperature
+        description: "Minimum temperature for the hour"
+      - name: max_temperature
+        description: "Maximum temperature for the hour"
+      - name: avg_humidity
+        description: "Average humidity percentage for the hour"
+      - name: avg_pressure
+        description: "Average atmospheric pressure for the hour"
+      - name: avg_wind_speed
+        description: "Average wind speed for the hour"
+      - name: most_common_condition
+        description: "Most common weather condition for the hour"
+      - name: measurement_count
+        description: "Number of measurements for the hour"
+      - name: generated_at
+        description: "Timestamp when this summary was generated"
+        
+  - name: temperature_analysis
+    description: "Advanced temperature analysis with conversions and categorizations"
+    columns:
+      - name: city
+        description: "City name"
+      - name: measurement_date
+        description: "Date of measurement (YYYY-MM-DD)"
+      - name: measurement_hour
+        description: "Hour of measurement (24h format)"
+      - name: temp_celsius
+        description: "Temperature in Celsius"
+      - name: temp_celsius_rounded
+        description: "Temperature in Celsius rounded to 1 decimal"
+      - name: temp_fahrenheit
+        description: "Temperature in Fahrenheit rounded to 1 decimal"
+      - name: daily_avg_temp_celsius
+        description: "Average temperature for the day in Celsius"
+      - name: daily_avg_temp_celsius_rounded
+        description: "Average temperature for the day in Celsius rounded to 1 decimal"
+      - name: daily_avg_temp_fahrenheit
+        description: "Average temperature for the day in Fahrenheit rounded to 1 decimal"
+      - name: hourly_avg_temp_celsius
+        description: "Average temperature for this hour of day in Celsius"
+      - name: hourly_avg_temp_celsius_rounded
+        description: "Average temperature for this hour of day in Celsius rounded to 1 decimal"
+      - name: hourly_avg_temp_fahrenheit
+        description: "Average temperature for this hour of day in Fahrenheit rounded to 1 decimal"
+      - name: temperature_category
+        description: "Temperature categorization (Freezing, Cold, Cool, Warm, Hot)"
+      - name: source_record_id
+        description: "Reference to the ID in the source data"
+      - name: measurement_time
+        description: "Full timestamp of the measurement" 
