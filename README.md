@@ -258,3 +258,91 @@ realtime_weather_data/
 - Web dashboard for data visualization
 - Additional data transformations and analysis
 - Support for more weather data metrics and cities 
+
+## Testing the Pipeline
+
+You can run comprehensive tests on the pipeline to ensure all components are working correctly:
+
+```bash
+python test_pipeline.py
+```
+
+This script will test:
+1. OpenWeatherMap API connectivity
+2. Kafka producer functionality
+3. Kafka consumer functionality
+4. PostgreSQL database connection and data storage
+5. DBT transformations
+
+You can also test individual components:
+
+```bash
+python test_pipeline.py --test api     # Test just the API connection
+python test_pipeline.py --test producer # Test just the Kafka producer
+python test_pipeline.py --test consumer # Test just the Kafka consumer
+python test_pipeline.py --test database # Test just the database connection
+python test_pipeline.py --test dbt      # Test just the DBT transformations
+```
+
+## Docker Support
+
+The producer component can be containerized for easier deployment.
+
+### Building the Docker Image
+
+```bash
+docker build -t weather-producer .
+```
+
+### Running with Docker Compose
+
+```bash
+docker-compose up -d
+```
+
+This will start the producer container in the background.
+
+## AWS Fargate Deployment
+
+The producer can be deployed to AWS Fargate for serverless container management.
+
+### Prerequisites
+
+1. AWS CLI installed and configured
+2. Appropriate AWS IAM permissions
+3. AWS Secrets Manager configured with the following secrets:
+   - `weather/kafka-api-key`
+   - `weather/kafka-api-secret`
+   - `weather/openweather-api-key`
+
+### Deployment Steps
+
+1. Navigate to the AWS directory:
+   ```bash
+   cd aws
+   ```
+
+2. Update the networking configuration in `deploy_to_fargate.sh`:
+   - Replace `subnet-12345678` with your actual subnet ID
+   - Replace `sg-12345678` with your actual security group ID
+
+3. Run the deployment script:
+   ```bash
+   chmod +x deploy_to_fargate.sh
+   ./deploy_to_fargate.sh
+   ```
+
+This script will:
+- Create an ECR repository if it doesn't exist
+- Build and push the Docker image to ECR
+- Create an ECS cluster if it doesn't exist
+- Register a task definition for Fargate
+- Create or update the ECS service
+
+### Monitoring
+
+You can monitor the running container in the AWS ECS console or using AWS CloudWatch Logs.
+
+## Conclusion
+
+This weather data pipeline demonstrates a modern architecture using Confluent Kafka, PostgreSQL, and DBT. It can be deployed traditionally, containerized with Docker, or run serverlessly on AWS Fargate. 

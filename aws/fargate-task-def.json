@@ -1,0 +1,49 @@
+{
+  "family": "weather-producer",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::<your-account-id>:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "weather-producer",
+      "image": "<your-ecr-repository-uri>:latest",
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/weather-producer",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "environment": [
+        {
+          "name": "KAFKA_BOOTSTRAP_SERVERS",
+          "value": "pkc-921jm.us-east-2.aws.confluent.cloud:9092"
+        },
+        {
+          "name": "CITY",
+          "value": "Toronto"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "KAFKA_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:<your-account-id>:secret:weather/kafka-api-key"
+        },
+        {
+          "name": "KAFKA_API_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:<your-account-id>:secret:weather/kafka-api-secret"
+        },
+        {
+          "name": "OPENWEATHER_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:<your-account-id>:secret:weather/openweather-api-key"
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512"
+} 
